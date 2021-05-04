@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>树形菜单</title>
+        <style type="text/css">
+            *{ padding:0; margin:0; list-style-type:none;}
+            body{font-family: "宋体";font-size: 12px; width:236px;}
+            #tree{ width:236px; margin:50px auto auto auto; overflow:hidden; border:1px #999 solid; border-bottom:0;}
+            .tit{ width:236px; border-bottom:1px #999 solid; background-color:#CCC; height:22px; line-height:22px; font-weight:bold; cursor:pointer; }
+            .tit span{padding-left:10px; width:236px;}
+            .con{ width:236px; border-bottom:1px #999 solid;overflow:hidden; display:none;}
+            .con li{width:236px; padding:6px 0px 1px 30px;}
+        </style>
+        <script language="javascript" type="text/javascript">
+            function showtree(obj,j){
+                var mycon = document.getElementById("tree").getElementsByTagName("ul");
+                //alert(mycon.length);
+                for(var i=0;i<mycon.length;i++){
+                    if (i==j){
+                        mycon[i].style.display = "block";
+                    }
+                    else{
+                        mycon[i].style.display = "none";
+                    }
+                }
+            }
+            function  mainframeshow(html) 
+            { 
+                window.parent.frames['mainFrame'].location.href=html; 
+                return   false; 
+            } 
+        </script>
+    </head>
+    <body>
+        <div id="tree">
+            <div class="tit"  onclick="showtree(this,0)"><span>+ 设备状态</span></div>
+            <ul class="con">
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/devstatus.cgi')">状态参数</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/reboot.cgi')">重启系统</a></li>
+            </ul>
+
+            <div class="tit"  onclick="showtree(this,1)"><span>+ 系统设置</span></div>
+            <ul class="con">
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/networking.cgi')">网络设置</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/servicecfg.cgi')">启动服务设置</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/systime.cgi')">系统时间更改</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/sshkeygen.cgi')">更新SSH密钥</a></li>
+            </ul>
+            <div class="tit"  onclick="showtree(this,2)"><span>+ 远程服务器设置</span></div>
+            <ul class="con">
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/nfssetting.cgi')">NFS服务器设置</a></li>
+            </ul>
+
+            <div class="tit"  onclick="showtree(this,3)"><span>+ 升级服务</span></div>
+            <ul class="con">
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/upkernel.cgi')">内核升级</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/upapp.cgi')">应用程序升级</a></li>
+                <li><a href="#" onclick= "return mainframeshow('cgi-bin/uprootfs.cgi')">根文件系统升级</a></li>
+            </ul>
+            
+            <div class="tit"  onclick="showtree(this,4)"><span>+ 访问管理</span></div>
+            <ul class="con">
+                <!--
+                <li><a href="#" onclick= "return mainframeshow('um/adduser.asp')">增加用户</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/deluser.asp')">删除用户</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/addgroup.asp')">增加组</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/delgroup.asp')">删除组</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/addlimit.asp')">增加访问权限</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/dellimit.asp')">删除访问权限</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/savecfg.asp')">保存配置</a></li>
+                <li><a href="#" onclick= "return mainframeshow('um/loadcfg.asp')">装载配置</a></li>
+               -->
+                <li><a href="#" onclick= "return mainframeshow('um/setpw.asp')">更改密码</a></li>
+            </ul>
+
+        </div>
+    </body>
+</html>
